@@ -1,0 +1,1303 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tabelas Fixas do Zero · milhas do zero</title>
+<meta name="description" content="O método das Tabelas Fixas. Passagens com valor fixo pra qualquer data, mesmo em feriado, alta temporada ou em cima da hora. 4 aulas, R$ 49,90.">
+<meta name="theme-color" content="#0A0908">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===== TOKENS ===== */
+:root{
+  --bg:#0A0908;
+  --bg-elev:#141210;
+  --bg-elev-2:#1B1815;
+  --glass:rgba(255,255,255,0.04);
+  --glass-strong:rgba(255,255,255,0.07);
+  --text:#FAF7F2;
+  --text-dim:#B8B5AE;
+  --text-muted:#7A766F;
+  --brand:#00D26A;
+  --brand-deep:#00A856;
+  --brand-soft:rgba(0,210,106,0.14);
+  --brand-glow:rgba(0,210,106,0.32);
+  --success:#22C55E;
+  --danger:#EF4444;
+  --danger-soft:rgba(239,68,68,0.14);
+  --border:rgba(255,255,255,0.08);
+  --border-strong:rgba(255,255,255,0.14);
+  --radius:18px;
+  --radius-sm:12px;
+  --radius-lg:28px;
+  --shadow-card:0 24px 64px -24px rgba(0,0,0,0.6);
+  --shadow-glow:0 0 0 1px rgba(0,210,106,0.18), 0 24px 64px -16px rgba(0,168,86,0.32);
+  --container:1180px;
+  --ease:cubic-bezier(0.32,0.72,0,1);
+  --font-display:'Bricolage Grotesque','Manrope',system-ui,sans-serif;
+  --font-body:'Manrope',system-ui,-apple-system,sans-serif;
+}
+
+/* ===== RESET ===== */
+*,*::before,*::after{box-sizing:border-box}
+html{overflow-anchor:none;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  font-size:16px;
+  line-height:1.55;
+  font-weight:400;
+  letter-spacing:-0.005em;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overscroll-behavior-y:none;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%;height:auto}
+button{font-family:inherit;color:inherit;background:none;border:0;cursor:pointer;padding:0}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4,p{margin:0}
+h1,h2,h3,h4{font-family:var(--font-display);font-variation-settings:"wdth" 100;}
+ul{margin:0;padding:0;list-style:none}
+
+/* ===== LAYOUT ===== */
+.wrap{max-width:var(--container);margin-inline:auto;padding-inline:24px;position:relative}
+section{position:relative;padding-block:96px}
+section.lazy{content-visibility:auto;contain-intrinsic-size:0 800px}
+
+h1{
+  font-size:clamp(40px,6.4vw,76px);
+  line-height:1.02;letter-spacing:-0.025em;font-weight:700;
+}
+h2{
+  font-size:clamp(30px,4.4vw,52px);
+  line-height:1.06;letter-spacing:-0.018em;font-weight:700;
+}
+h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
+.lead{font-size:clamp(16px,1.6vw,19px);line-height:1.55;color:var(--text-dim);max-width:62ch}
+.section-head{margin-bottom:56px;max-width:760px}
+.section-head h2{margin-bottom:18px}
+
+/* ===== BUTTONS (CAPS LOCK) ===== */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:15px 22px;border-radius:14px;font-size:13.5px;font-weight:700;
+  font-family:var(--font-body);
+  text-transform:uppercase;letter-spacing:0.06em;
+  transition:transform .18s var(--ease),background .18s var(--ease),box-shadow .18s var(--ease);
+  white-space:nowrap;
+}
+.btn-primary{
+  background:linear-gradient(180deg,var(--brand) 0%,var(--brand-deep) 100%);
+  color:#001b0d;
+  box-shadow:0 1px 0 rgba(255,255,255,0.25) inset, 0 12px 40px -12px rgba(0,210,106,0.55);
+}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,0.3) inset, 0 16px 48px -10px rgba(0,210,106,0.7)}
+.btn-ghost{
+  background:var(--glass);
+  color:var(--text);
+  border:1px solid var(--border-strong);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+.btn-ghost:hover{background:var(--glass-strong);transform:translateY(-1px)}
+.btn-lg{padding:18px 28px;font-size:14.5px;border-radius:16px;letter-spacing:0.08em}
+.btn .arrow{transition:transform .18s var(--ease)}
+.btn:hover .arrow{transform:translateX(3px)}
+
+/* ===== HERO ===== */
+.hero{
+  padding-top:64px;padding-bottom:56px;
+  overflow:hidden;position:relative;
+  min-height:680px;
+}
+
+/* HERO BACKGROUND HIPNOTIZANTE */
+.hero-bg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+}
+.hero-bg-mesh{
+  position:absolute;inset:-25%;
+  background:
+    radial-gradient(circle at 18% 24%,rgba(0,210,106,0.22) 0%,transparent 38%),
+    radial-gradient(circle at 78% 68%,rgba(0,168,86,0.18) 0%,transparent 42%),
+    radial-gradient(circle at 92% 12%,rgba(0,210,106,0.14) 0%,transparent 32%),
+    radial-gradient(circle at 50% 100%,rgba(0,168,86,0.12) 0%,transparent 50%);
+  filter:blur(36px);
+  animation:meshDrift 22s ease-in-out infinite;
+}
+@keyframes meshDrift{
+  0%,100%{transform:translate(0,0) rotate(0deg) scale(1);}
+  25%{transform:translate(-2.5%,2%) rotate(2deg) scale(1.04);}
+  50%{transform:translate(2%,-2.5%) rotate(-2deg) scale(1.02);}
+  75%{transform:translate(-1.5%,-1%) rotate(1deg) scale(1.05);}
+}
+.hero-bg-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(circle,rgba(0,210,106,0.13) 1px,transparent 1px);
+  background-size:36px 36px;
+  background-position:0 0;
+  opacity:0.35;
+  animation:dotPulse 6s ease-in-out infinite;
+  mask-image:radial-gradient(ellipse at center,black 0%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at center,black 0%,transparent 75%);
+}
+@keyframes dotPulse{
+  0%,100%{opacity:0.22;}
+  50%{opacity:0.42;}
+}
+.hero-bg-planes{position:absolute;inset:0;}
+.plane-line{
+  fill:none;stroke:rgba(0,210,106,0.18);stroke-width:1;stroke-dasharray:2 6;
+}
+.plane-icon{opacity:0;}
+.plane-icon-1{
+  offset-path:path('M -5 280 Q 600 80 1200 320');
+  offset-rotate:auto;
+  animation:planeFly1 24s linear infinite;
+}
+.plane-icon-2{
+  offset-path:path('M 1200 120 Q 600 380 -5 80');
+  offset-rotate:auto;
+  animation:planeFly2 32s linear infinite 6s;
+}
+@keyframes planeFly1{
+  0%{offset-distance:0%;opacity:0;}
+  6%{opacity:0.65;}
+  92%{opacity:0.65;}
+  100%{offset-distance:100%;opacity:0;}
+}
+@keyframes planeFly2{
+  0%{offset-distance:0%;opacity:0;}
+  6%{opacity:0.5;}
+  92%{opacity:0.5;}
+  100%{offset-distance:100%;opacity:0;}
+}
+
+/* HERO LAYOUT */
+.hero-grid{
+  position:relative;z-index:2;
+  display:grid;grid-template-columns:1.05fr 1fr;gap:64px;align-items:center;
+}
+.hero-copy h1{margin:0 0 22px}
+.hero-copy h1 .accent{color:var(--brand);position:relative;display:inline-block;font-style:italic}
+.hero-copy .lead{margin-bottom:32px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:30px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:24px;color:var(--text-muted);font-size:13px;font-weight:500}
+.hero-meta span{display:inline-flex;align-items:center;gap:8px}
+.hero-meta .check{color:var(--brand)}
+
+/* HERO STAGE: foto Davi + pop-ups */
+.hero-stage{
+  position:relative;
+  height:540px;
+  display:flex;align-items:center;justify-content:center;
+}
+.davi-photo{
+  position:relative;
+  width:340px;height:420px;
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 35% 28%,rgba(0,210,106,0.5) 0%,transparent 55%),
+    linear-gradient(160deg,#1F1C18 0%,#0F0E0C 70%,#0A0908 100%);
+  border:1px solid rgba(0,210,106,0.25);
+  overflow:hidden;
+  display:grid;place-items:center;
+  box-shadow:0 32px 80px -20px rgba(0,168,86,0.35),0 0 0 1px rgba(0,210,106,0.12);
+}
+.davi-photo::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,transparent 50%,rgba(10,9,8,0.6) 100%),
+    radial-gradient(circle at 50% 80%,rgba(0,210,106,0.18) 0%,transparent 60%);
+}
+.davi-photo .placeholder{
+  position:relative;z-index:1;
+  font-family:var(--font-display);
+  font-size:120px;font-weight:800;color:rgba(250,247,242,0.18);letter-spacing:-0.04em;
+}
+.davi-photo .photo-tag{
+  position:absolute;bottom:18px;left:18px;right:18px;z-index:2;
+  font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);font-weight:600;
+}
+.davi-photo .photo-tag b{color:var(--text);font-weight:700;display:block;font-size:13px;letter-spacing:0.04em;text-transform:none;font-family:var(--font-display)}
+
+/* POP-UPS DINÂMICOS */
+.popup{
+  position:absolute;z-index:3;
+  display:flex;align-items:center;gap:12px;
+  padding:14px 18px;border-radius:14px;
+  background:rgba(20,18,16,0.92);
+  border:1px solid var(--border-strong);
+  backdrop-filter:blur(14px) saturate(160%);
+  -webkit-backdrop-filter:blur(14px) saturate(160%);
+  box-shadow:0 16px 40px -12px rgba(0,0,0,0.6);
+  opacity:0;
+  white-space:nowrap;
+  pointer-events:none;
+}
+.popup-icon{
+  flex-shrink:0;
+  width:32px;height:32px;border-radius:10px;
+  display:grid;place-items:center;
+  font-size:14px;
+}
+.popup-text strong{
+  display:block;
+  font-family:var(--font-display);
+  font-size:13px;font-weight:700;color:var(--text);letter-spacing:-0.006em;
+  line-height:1.2;
+}
+.popup-text small{
+  display:block;
+  font-size:11.5px;color:var(--text-dim);font-weight:500;
+  margin-top:2px;
+}
+.popup-text small s{color:var(--danger);text-decoration-thickness:1.5px;margin-right:4px}
+
+/* posições e ciclos individuais */
+.popup-1{top:6%;left:-6%;}
+.popup-1 .popup-icon{background:var(--brand-soft);color:var(--brand);}
+.popup-2{bottom:14%;right:-4%;}
+.popup-2 .popup-icon{background:rgba(34,197,94,0.16);color:var(--success);}
+.popup-3{top:42%;left:-12%;}
+.popup-3 .popup-icon{background:var(--danger-soft);color:var(--danger);}
+.popup-4{bottom:4%;left:8%;}
+.popup-4 .popup-icon{background:var(--brand-soft);color:var(--brand);}
+
+.in-view .popup-1{animation:popupShow 16s ease-in-out 0s infinite;}
+.in-view .popup-2{animation:popupShow 16s ease-in-out 4s infinite;}
+.in-view .popup-3{animation:popupShow 16s ease-in-out 8s infinite;}
+.in-view .popup-4{animation:popupShow 16s ease-in-out 12s infinite;}
+
+@keyframes popupShow{
+  0%,3%{opacity:0;transform:translate(15px,8px) scale(0.92);}
+  9%{opacity:1;transform:translate(0,0) scale(1);}
+  20%,30%{opacity:1;transform:translate(0,-3px) scale(1);}
+  40%{opacity:1;transform:translate(0,0) scale(1);}
+  46%{opacity:0;transform:translate(0,-12px) scale(0.95);}
+  100%{opacity:0;transform:translate(15px,8px) scale(0.92);}
+}
+
+/* ===== ALERT MARQUEE ===== */
+.alert-marquee{
+  position:relative;
+  background:linear-gradient(90deg,rgba(239,68,68,0.04) 0%,rgba(239,68,68,0.1) 50%,rgba(239,68,68,0.04) 100%);
+  border-block:1px solid rgba(239,68,68,0.18);
+  padding:16px 0;
+  overflow:hidden;
+  z-index:5;
+}
+.alert-marquee::before,
+.alert-marquee::after{
+  content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
+}
+.alert-marquee::before{left:0;background:linear-gradient(90deg,var(--bg) 0%,transparent 100%);}
+.alert-marquee::after{right:0;background:linear-gradient(270deg,var(--bg) 0%,transparent 100%);}
+
+.marquee-track{
+  display:flex;gap:48px;white-space:nowrap;
+  animation:marqueeRun 80s linear infinite;
+  width:max-content;
+}
+.marquee-track span{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:13px;font-weight:600;color:var(--text);
+  letter-spacing:-0.005em;
+}
+.marquee-track .icon{
+  color:var(--danger);font-size:13px;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:22px;height:22px;border-radius:6px;
+  background:rgba(239,68,68,0.12);
+  border:1px solid rgba(239,68,68,0.22);
+}
+.marquee-track b{color:var(--danger);font-weight:700;}
+@keyframes marqueeRun{
+  from{transform:translateX(0);}
+  to{transform:translateX(calc(-50% - 24px));}
+}
+
+/* ===== PROBLEM ===== */
+.problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.problem-card{
+  position:relative;
+  padding:30px;
+  border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(27,24,21,0.7) 0%,rgba(20,18,16,0.8) 100%);
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.problem-card .illu{height:130px;margin-bottom:24px;display:flex;align-items:center;justify-content:center}
+.problem-card h3{margin-bottom:10px;font-size:22px}
+.problem-card p{color:var(--text-dim);font-size:15px}
+.problem-transition{
+  margin-top:48px;
+  text-align:center;
+  font-size:clamp(18px,2.2vw,22px);
+  color:var(--text);
+  font-weight:500;
+  font-family:var(--font-display);
+  max-width:680px;
+  margin-inline:auto;
+  letter-spacing:-0.01em;
+  line-height:1.4;
+}
+.problem-transition span{color:var(--brand)}
+
+/* ===== SHIFT ===== */
+.shift{padding-block:120px;position:relative;overflow:hidden}
+.shift::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(700px 350px at 50% 50%,rgba(0,210,106,0.08) 0%,transparent 70%);
+}
+.shift-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;margin-bottom:72px}
+.shift-copy h2{margin-bottom:22px}
+.shift-copy h2 .accent{color:var(--brand);font-style:italic;font-weight:700}
+.shift-copy .lead{font-size:17px}
+.shift-visual{position:relative;height:380px;display:flex;align-items:center;justify-content:center}
+
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:stepc}
+.step-card{
+  position:relative;padding:32px 28px;
+  border-radius:var(--radius);
+  background:var(--bg-elev);
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.step-num{
+  position:absolute;top:24px;right:28px;
+  font-family:var(--font-display);
+  font-size:64px;font-weight:800;letter-spacing:-0.04em;line-height:1;
+  color:transparent;-webkit-text-stroke:1px rgba(0,210,106,0.4);
+  opacity:0.7;
+}
+.step-card h3{margin:80px 0 10px;font-size:22px}
+.step-card p{color:var(--text-dim);font-size:15px}
+.step-arrow{
+  display:none;position:absolute;right:-12px;top:50%;transform:translateY(-50%);
+  color:var(--brand);opacity:0.7;
+}
+@media (min-width:769px){
+  .step-arrow{display:block}
+  .step-card:last-child .step-arrow{display:none}
+}
+
+/* ===== COMPARE ===== */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.compare-card{
+  position:relative;padding:34px;border-radius:var(--radius);
+  display:flex;flex-direction:column;gap:22px;min-height:420px;
+}
+.compare-before{
+  background:linear-gradient(180deg,rgba(239,68,68,0.07) 0%,rgba(20,18,16,0.6) 100%);
+  border:1px solid rgba(239,68,68,0.22);
+}
+.compare-after{
+  background:linear-gradient(180deg,rgba(0,210,106,0.09) 0%,rgba(20,18,16,0.6) 100%);
+  border:1px solid rgba(0,210,106,0.32);
+}
+.compare-tag{
+  font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  display:inline-flex;align-items:center;gap:8px;width:fit-content;
+  padding:5px 10px;border-radius:999px;
+}
+.compare-tag.before{color:var(--danger);background:var(--danger-soft);border:1px solid rgba(239,68,68,0.3)}
+.compare-tag.after{color:var(--brand);background:var(--brand-soft);border:1px solid rgba(0,210,106,0.3)}
+.compare-route{font-size:14px;color:var(--text-dim);font-weight:500}
+.compare-route b{color:var(--text);font-weight:700}
+.compare-amount{font-size:clamp(40px,5vw,56px);font-weight:800;letter-spacing:-0.02em;line-height:1;font-family:var(--font-display)}
+.compare-amount.before{color:var(--danger)}
+.compare-amount.after{color:var(--brand)}
+.compare-quote{
+  margin-top:auto;padding-top:18px;border-top:1px solid var(--border);
+  font-size:14px;color:var(--text-dim);font-style:italic;
+}
+.compare-bar{height:8px;border-radius:99px;background:var(--bg-elev-2);overflow:hidden;position:relative}
+.compare-bar-fill{
+  height:100%;border-radius:99px;
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 1.4s var(--ease);
+}
+.compare-card.in-view .compare-bar-fill{transform:scaleX(1)}
+.compare-bar-fill.before{background:linear-gradient(90deg,var(--danger) 0%,rgba(239,68,68,0.4) 100%);width:100%}
+.compare-bar-fill.after{background:linear-gradient(90deg,var(--brand) 0%,rgba(0,210,106,0.4) 100%);width:14%}
+.compare-meta{font-size:12.5px;color:var(--text-muted);font-weight:500}
+.compare-print-placeholder{
+  flex:1;min-height:140px;
+  border:1.5px dashed rgba(0,210,106,0.3);
+  border-radius:var(--radius-sm);
+  background:rgba(0,210,106,0.04);
+  display:flex;align-items:center;justify-content:center;
+  font-size:12px;color:var(--text-muted);font-weight:500;
+  text-align:center;padding:24px;line-height:1.5;
+}
+.compare-note{
+  margin-top:32px;padding:20px 24px;
+  border-radius:var(--radius-sm);background:var(--glass);border:1px solid var(--border);
+  font-size:13.5px;color:var(--text-dim);text-align:center;font-weight:500;
+}
+.compare-note b{color:var(--brand);font-weight:700}
+
+/* ===== AUTHORITY ===== */
+.authority{padding-block:120px}
+.authority-grid{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:center}
+.author-photo{
+  aspect-ratio:1/1;border-radius:24px;
+  background:
+    radial-gradient(circle at 30% 30%,rgba(0,210,106,0.4) 0%,transparent 50%),
+    linear-gradient(135deg,#1F1C18 0%,#0F0E0C 100%);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden;
+  display:grid;place-items:center;
+}
+.author-photo::after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle at 50% 80%,rgba(0,210,106,0.15) 0%,transparent 60%);
+}
+.author-photo .placeholder{
+  font-family:var(--font-display);
+  font-size:80px;font-weight:800;color:rgba(250,247,242,0.18);letter-spacing:-0.04em;
+}
+.authority-copy h2{margin-bottom:18px}
+.authority-bio p{color:var(--text-dim);font-size:16px;line-height:1.65}
+.authority-bio p+p{margin-top:14px}
+.authority-bullets{margin-top:28px;display:grid;gap:14px}
+.authority-bullets li{
+  display:flex;gap:14px;align-items:flex-start;
+  font-size:15.5px;color:var(--text-dim);
+}
+.authority-bullets li b{color:var(--text);font-weight:700;margin-right:4px}
+.authority-bullets .check-icon{
+  flex-shrink:0;width:24px;height:24px;border-radius:50%;
+  background:var(--brand-soft);color:var(--brand);
+  display:grid;place-items:center;
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials{padding-block:120px;position:relative;overflow:hidden}
+.testimonials::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(900px 400px at 50% 0%,rgba(0,210,106,0.05) 0%,transparent 60%);
+}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;}
+.testimonial-print{
+  border-radius:var(--radius-sm);
+  background:var(--bg-elev);
+  border:1px solid var(--border);
+  overflow:hidden;
+  aspect-ratio:9/16;
+  position:relative;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  box-shadow:var(--shadow-card);
+}
+.testimonial-placeholder{
+  text-align:center;color:var(--text-muted);
+  font-size:13px;font-weight:500;
+  border:1.5px dashed rgba(0,210,106,0.25);
+  border-radius:var(--radius-sm);
+  width:100%;height:100%;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;
+  background:rgba(0,210,106,0.03);
+}
+.testimonial-placeholder .icon{
+  width:36px;height:36px;border-radius:50%;background:var(--brand-soft);color:var(--brand);
+  display:grid;place-items:center;
+}
+.testimonials-link{margin-top:48px;text-align:center;font-size:14px;color:var(--text-dim)}
+.testimonials-link a{color:var(--brand);font-weight:600}
+.testimonials-link a:hover{text-decoration:underline}
+
+/* ===== PLAN (DESTAQUE INTENSO) ===== */
+.plan{padding-block:140px;position:relative;overflow:hidden}
+.plan::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    radial-gradient(900px 600px at 50% 100%,rgba(0,210,106,0.14) 0%,transparent 70%),
+    radial-gradient(600px 400px at 50% 0%,rgba(0,210,106,0.06) 0%,transparent 60%);
+}
+
+.plan-card{
+  max-width:600px;margin:32px auto 0;
+  position:relative;
+  padding:48px 40px 40px;
+  border-radius:28px;
+  background:linear-gradient(180deg,rgba(20,18,16,0.92) 0%,rgba(10,9,8,0.96) 100%);
+  border:2px solid rgba(0,210,106,0.4);
+  backdrop-filter:blur(24px) saturate(180%);
+  -webkit-backdrop-filter:blur(24px) saturate(180%);
+  overflow:visible;
+  animation:planPulse 4s ease-in-out infinite;
+}
+@keyframes planPulse{
+  0%,100%{
+    box-shadow:
+      0 0 0 1px rgba(0,210,106,0.18),
+      0 0 60px -10px rgba(0,210,106,0.25),
+      0 24px 64px -16px rgba(0,168,86,0.32);
+  }
+  50%{
+    box-shadow:
+      0 0 0 1px rgba(0,210,106,0.34),
+      0 0 80px -8px rgba(0,210,106,0.45),
+      0 32px 80px -10px rgba(0,168,86,0.5);
+  }
+}
+.plan-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent 0%,var(--brand) 50%,transparent 100%);
+}
+
+.plan-ribbon{
+  position:absolute;top:-16px;left:50%;transform:translateX(-50%);
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 20px;border-radius:999px;
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%);
+  color:#001b0d;
+  font-size:11.5px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+  box-shadow:0 12px 28px -8px var(--brand-glow),inset 0 1px 0 rgba(255,255,255,0.4);
+  white-space:nowrap;
+  animation:ribbonPulse 4s ease-in-out infinite;
+}
+@keyframes ribbonPulse{
+  0%,100%{transform:translateX(-50%) scale(1);}
+  50%{transform:translateX(-50%) scale(1.04);}
+}
+.plan-ribbon .bolt{font-size:13px;}
+
+.plan-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:6px 14px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--brand);background:var(--brand-soft);border:1px solid rgba(0,210,106,0.3);
+  margin-bottom:18px;
+}
+.plan-name{font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.014em;margin-bottom:6px}
+.plan-sub{font-size:14px;color:var(--text-muted);margin-bottom:28px;font-weight:500}
+
+.plan-features{display:grid;gap:12px;margin-bottom:22px}
+.plan-features li{
+  display:flex;gap:10px;font-size:14.5px;color:var(--text-dim);align-items:center;
+  justify-content:space-between;padding:6px 0;
+}
+.plan-features li > span:first-child{display:flex;gap:10px;align-items:center}
+.plan-features .check-icon{
+  flex-shrink:0;color:var(--brand);
+  width:22px;height:22px;border-radius:50%;background:var(--brand-soft);
+  display:grid;place-items:center;
+}
+.plan-features .item-value{color:var(--text-muted);font-size:13px;font-weight:600;font-style:italic}
+
+.plan-stack-total{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 0;margin-bottom:14px;
+  border-top:1px dashed var(--border);border-bottom:1px dashed var(--border);
+  font-size:14px;color:var(--text-dim);font-weight:600;
+}
+.plan-stack-total .total-old{
+  color:var(--danger);font-weight:800;font-size:18px;
+  text-decoration:line-through;text-decoration-thickness:2.5px;
+  font-family:var(--font-display);
+}
+
+.plan-price-block{margin:22px 0 6px;text-align:center}
+.plan-current{
+  font-family:var(--font-display);
+  font-size:78px;font-weight:800;letter-spacing:-0.04em;line-height:1;
+  background:linear-gradient(135deg,var(--text) 0%,var(--brand) 100%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+  filter:drop-shadow(0 0 24px rgba(0,210,106,0.4));
+  display:inline-block;
+}
+.plan-current .currency{font-size:0.4em;font-weight:700;margin-right:6px;vertical-align:0.45em}
+.plan-current .cents{font-size:0.4em;letter-spacing:-0.01em;}
+.plan-payment{font-size:15px;color:var(--text-dim);margin-top:8px;font-weight:600}
+.plan-installment{font-size:13.5px;color:var(--text-muted);margin-top:4px;font-weight:500}
+.plan-economy{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:10px;
+  padding:5px 12px;border-radius:999px;
+  background:var(--brand-soft);color:var(--brand);
+  font-size:11.5px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;
+  border:1px solid rgba(0,210,106,0.3);
+}
+
+.plan-cta{
+  width:100%;font-size:15px;padding:20px 22px;margin-top:28px;
+  position:relative;overflow:hidden;
+}
+.plan-cta::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,0.25) 50%,transparent 70%);
+  transform:translateX(-100%);
+  animation:ctaShine 3s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes ctaShine{
+  0%,40%{transform:translateX(-100%);}
+  60%,100%{transform:translateX(100%);}
+}
+
+.plan-guarantee{
+  margin-top:20px;padding-top:18px;border-top:1px solid var(--border);
+  font-size:13px;color:var(--text-muted);text-align:center;
+  display:flex;align-items:center;justify-content:center;gap:8px;font-weight:500;
+}
+.plan-guarantee .shield{color:var(--brand)}
+
+/* ===== FAQ ===== */
+.faq{max-width:780px;margin-inline:auto}
+.faq-item{border-bottom:1px solid var(--border);}
+.faq-item:first-child{border-top:1px solid var(--border)}
+.faq-q{
+  width:100%;text-align:left;
+  display:flex;justify-content:space-between;align-items:center;gap:18px;
+  padding:24px 0;font-size:17px;font-weight:600;color:var(--text);letter-spacing:-0.01em;
+  font-family:var(--font-display);
+}
+.faq-q:hover{color:var(--brand)}
+.faq-icon{
+  flex-shrink:0;width:30px;height:30px;border-radius:50%;
+  background:var(--glass);border:1px solid var(--border-strong);
+  display:grid;place-items:center;color:var(--text-dim);
+  transition:transform .25s var(--ease),background .18s var(--ease);
+}
+.faq-item[aria-expanded="true"] .faq-icon{transform:rotate(45deg);background:var(--brand-soft);color:var(--brand);border-color:rgba(0,210,106,0.3)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s var(--ease);}
+.faq-a-inner{padding:0 0 24px;color:var(--text-dim);font-size:15px;max-width:680px;line-height:1.6}
+.faq-item[aria-expanded="true"] .faq-a{max-height:300px}
+
+/* ===== CTA FINAL ===== */
+.cta-final{padding-block:120px;text-align:center;position:relative;overflow:hidden}
+.cta-final::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(900px 500px at 50% 50%,rgba(0,210,106,0.12) 0%,transparent 70%);
+}
+.cta-final .wrap{position:relative}
+.cta-final h2{font-size:clamp(34px,5.2vw,60px);max-width:22ch;margin-inline:auto;margin-bottom:20px;line-height:1.08}
+.cta-final h2 .accent{color:var(--brand);font-style:italic}
+.cta-final p{margin-bottom:36px;color:var(--text-dim);font-weight:500}
+
+/* ===== FOOTER ===== */
+.footer{padding-block:48px;border-top:1px solid var(--border);background:rgba(0,0,0,0.3)}
+.footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.012em;font-family:var(--font-display)}
+.footer-mark{
+  width:30px;height:30px;border-radius:9px;
+  background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%);
+  display:grid;place-items:center;font-size:14px;font-weight:800;color:#001b0d;
+}
+.footer-text{font-size:15px;line-height:1.1}
+.footer-text small{display:block;font-size:11px;color:var(--text-muted);font-weight:500;letter-spacing:0.04em;text-transform:uppercase;font-family:var(--font-body);margin-top:2px}
+.footer-links{display:flex;gap:24px;font-size:13px;color:var(--text-muted);font-weight:500}
+.footer-links a:hover{color:var(--brand)}
+.footer-copy{font-size:12.5px;color:var(--text-muted);font-weight:500}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+.reveal.delay-1{transition-delay:.08s}
+.reveal.delay-2{transition-delay:.16s}
+.reveal.delay-3{transition-delay:.24s}
+.reveal.delay-4{transition-delay:.32s}
+
+/* ===== MOBILE ===== */
+@media (max-width:1024px){
+  .hero{min-height:auto;}
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-stage{height:480px;max-width:380px;margin-inline:auto;width:100%}
+  .davi-photo{width:280px;height:360px;margin-inline:auto}
+  .shift-grid{grid-template-columns:1fr;gap:40px}
+  .shift-visual{height:300px}
+  .authority-grid{grid-template-columns:240px 1fr;gap:40px}
+  .testimonials-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:768px){
+  section{padding-block:72px}
+  .hero{padding-top:48px}
+  .problem-grid,.steps-grid,.compare-grid{grid-template-columns:1fr}
+  .testimonials-grid{grid-template-columns:1fr;max-width:380px;margin-inline:auto}
+  .testimonial-print{aspect-ratio:9/14}
+  .authority-grid{grid-template-columns:1fr;gap:32px}
+  .author-photo{max-width:240px;margin-inline:auto}
+  .plan-card{padding:42px 24px 32px}
+  .plan-current{font-size:60px}
+  .footer-grid{flex-direction:column;text-align:center}
+  .btn-ghost,.plan-card,.popup{
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
+  }
+  .hero-meta{gap:14px}
+  .compare-card{padding:26px;min-height:0}
+  .hero-stage{height:440px;max-width:340px;}
+  .davi-photo{width:240px;height:320px;}
+  .popup{font-size:11px;padding:10px 14px;}
+  .popup-text strong{font-size:12px;}
+  .popup-text small{font-size:10.5px;}
+  .popup-1{left:0;}
+  .popup-2{right:0;}
+  .popup-3{left:-4%;}
+  .popup-4{left:6%;}
+  .marquee-track{animation-duration:50s;}
+  .marquee-track span{font-size:12px;}
+}
+@media (max-width:480px){
+  .wrap{padding-inline:18px}
+  h1{font-size:38px}
+  h2{font-size:30px}
+  .hero-ctas .btn{flex:1;justify-content:center}
+  .plan-current{font-size:54px}
+  .plan-ribbon{font-size:10.5px;padding:7px 16px;}
+}
+
+/* ===== A11Y ===== */
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.001ms!important;animation-iteration-count:1!important;transition-duration:0.001ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .popup{opacity:1!important;}
+}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:6px}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" aria-labelledby="hero-h1">
+  <!-- Background hipnotizante -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-mesh"></div>
+    <div class="hero-bg-dots"></div>
+    <svg class="hero-bg-planes" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice">
+      <path class="plane-line" d="M -5 280 Q 600 80 1200 320"/>
+      <path class="plane-line" d="M 1200 120 Q 600 380 -5 80"/>
+      <g class="plane-icon plane-icon-1">
+        <path d="M -10 0 L 12 -3 L 18 0 L 12 3 Z M 4 -4 L 9 -9 L 11 -9 L 8 -2 Z M 4 4 L 9 9 L 11 9 L 8 2 Z" fill="rgba(0,210,106,0.6)"/>
+      </g>
+      <g class="plane-icon plane-icon-2">
+        <path d="M -8 0 L 10 -2.5 L 15 0 L 10 2.5 Z M 3 -3 L 7 -7 L 9 -7 L 7 -2 Z M 3 3 L 7 7 L 9 7 L 7 2 Z" fill="rgba(0,210,106,0.45)"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 id="hero-h1" class="reveal">Passagens secretas pra emitir e pagar até <span class="accent">8x menos</span>.</h1>
+      <p class="lead reveal delay-1">Você nunca mais vai pagar caro em passagem aérea. São as Tabelas Fixas: passagens com valor fixo pra qualquer data, mesmo em feriado, alta temporada ou em cima da hora. 4 aulas, R$ 49,90, acesso vitalício.</p>
+      <div class="hero-ctas reveal delay-2">
+        <a href="#plano" class="btn btn-primary btn-lg">
+          QUERO O MÉTODO · R$ 49,90
+          <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#metodo" class="btn btn-ghost btn-lg">COMO FUNCIONA →</a>
+      </div>
+      <div class="hero-meta reveal delay-3">
+        <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>acesso vitalício</span>
+        <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>7 dias de garantia</span>
+        <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>suporte via WhatsApp</span>
+      </div>
+    </div>
+
+    <!-- HERO STAGE: foto + pop-ups -->
+    <div class="hero-stage reveal">
+      <div class="davi-photo">
+        <span class="placeholder">DN</span>
+        <div class="photo-tag">
+          David Nussbaum
+          <b>Fundador · Milhas do Zero</b>
+        </div>
+      </div>
+
+      <!-- Pop-up 1 · Passagem emitida -->
+      <div class="popup popup-1" aria-hidden="true">
+        <span class="popup-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>
+        </span>
+        <div class="popup-text">
+          <strong>Passagem emitida</strong>
+          <small>GIG → SSA · R$ 489</small>
+        </div>
+      </div>
+
+      <!-- Pop-up 2 · Valor economizado -->
+      <div class="popup popup-2" aria-hidden="true">
+        <span class="popup-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5h4.5a2 2 0 0 1 0 4H9.5a2 2 0 0 0 0 4H14"/></svg>
+        </span>
+        <div class="popup-text">
+          <strong>Economizou R$ 2.193</strong>
+          <small>nessa viagem</small>
+        </div>
+      </div>
+
+      <!-- Pop-up 3 · Alerta última hora -->
+      <div class="popup popup-3" aria-hidden="true">
+        <span class="popup-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.7 3.86a2 2 0 0 0-3.4 0z"/></svg>
+        </span>
+        <div class="popup-text">
+          <strong>Última hora bloqueada</strong>
+          <small><s>R$ 3.298</s> R$ 219</small>
+        </div>
+      </div>
+
+      <!-- Pop-up 4 · Tabela atualizada -->
+      <div class="popup popup-4" aria-hidden="true">
+        <span class="popup-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        <div class="popup-text">
+          <strong>Tabela atualizada</strong>
+          <small>hoje, 14h27</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ALERT MARQUEE ===== -->
+<div class="alert-marquee" aria-label="indicadores de mercado de passagens aéreas no Brasil">
+  <div class="marquee-track">
+    <span><span class="icon">!</span>Carnaval 2026: passagens chegam a <b>R$ 2.500</b> em alta temporada</span>
+    <span><span class="icon">!</span>Réveillon: as 2 últimas semanas de dezembro custam <b>+R$ 480</b> em média</span>
+    <span><span class="icon">!</span>Comprar em cima da hora pode ser até <b>8x mais caro</b> que a tabela</span>
+    <span><span class="icon">!</span><b>R$ 2,3 bilhões</b> em dívida no caso 123 Milhas</span>
+    <span><span class="icon">!</span><b>185 milhões</b> de brasileiros em programas de fidelidade. Maioria desiste</span>
+    <span><span class="icon">!</span>Tarifa média no Brasil em 2026: <b>R$ 707</b>, alta de 17,8% em 12 meses</span>
+    <span><span class="icon">!</span>Promoções de última hora <b>não existem</b> no Brasil</span>
+    <!-- duplicado pra loop contínuo -->
+    <span><span class="icon">!</span>Carnaval 2026: passagens chegam a <b>R$ 2.500</b> em alta temporada</span>
+    <span><span class="icon">!</span>Réveillon: as 2 últimas semanas de dezembro custam <b>+R$ 480</b> em média</span>
+    <span><span class="icon">!</span>Comprar em cima da hora pode ser até <b>8x mais caro</b> que a tabela</span>
+    <span><span class="icon">!</span><b>R$ 2,3 bilhões</b> em dívida no caso 123 Milhas</span>
+    <span><span class="icon">!</span><b>185 milhões</b> de brasileiros em programas de fidelidade. Maioria desiste</span>
+    <span><span class="icon">!</span>Tarifa média no Brasil em 2026: <b>R$ 707</b>, alta de 17,8% em 12 meses</span>
+    <span><span class="icon">!</span>Promoções de última hora <b>não existem</b> no Brasil</span>
+  </div>
+</div>
+
+<!-- ===== PROBLEM ===== -->
+<section class="lazy" aria-labelledby="problema-h2">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="problema-h2">Você já tentou tudo. E em algum momento, sempre paga caro.</h2>
+      <p class="lead">São 3 caminhos que o brasileiro tenta antes de gastar do mesmo jeito.</p>
+    </div>
+
+    <div class="problem-grid">
+      <article class="problem-card reveal delay-1">
+        <div class="illu">
+          <svg viewBox="0 0 200 130" width="200" height="130" aria-hidden="true">
+            <defs>
+              <radialGradient id="haloR1" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#EF4444" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#EF4444" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="65" r="55" fill="url(#haloR1)"/>
+            <circle cx="100" cy="65" r="38" fill="none" stroke="rgba(239,68,68,0.25)" stroke-width="1"/>
+            <circle cx="100" cy="65" r="50" fill="none" stroke="rgba(239,68,68,0.15)" stroke-width="1"/>
+            <circle cx="100" cy="65" r="28" fill="#FAF7F2"/>
+            <line x1="100" y1="65" x2="100" y2="44" stroke="#0A0908" stroke-width="2.4" stroke-linecap="round"/>
+            <line x1="100" y1="65" x2="115" y2="65" stroke="#0A0908" stroke-width="2.4" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="0 100 65" to="360 100 65" dur="8s" repeatCount="indefinite"/>
+            </line>
+            <circle cx="100" cy="65" r="2.5" fill="#0A0908"/>
+            <text x="148" y="38" font-family="Manrope,sans-serif" font-weight="800" font-size="22" fill="#EF4444">
+              R$
+              <animate attributeName="y" values="50;30;50" dur="2.4s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.2;0.8;1" dur="2.4s" repeatCount="indefinite"/>
+            </text>
+          </svg>
+        </div>
+        <h3>Comprar em cima da hora</h3>
+        <p>Marcou compromisso de surpresa, casamento, emergência? O sistema sobe o preço na sua cara. A diferença entre comprar com antecedência e comprar na véspera chega a 8x mais cara na mesma rota, mesmo voo, mesma poltrona.</p>
+      </article>
+
+      <article class="problem-card reveal delay-2">
+        <div class="illu">
+          <svg viewBox="0 0 200 130" width="200" height="130" aria-hidden="true">
+            <defs>
+              <radialGradient id="haloR2" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#00D26A" stop-opacity="0.32"/>
+                <stop offset="100%" stop-color="#00D26A" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="65" r="55" fill="url(#haloR2)"/>
+            <circle cx="100" cy="65" r="38" fill="none" stroke="rgba(0,210,106,0.22)" stroke-width="1"/>
+            <circle cx="100" cy="65" r="50" fill="none" stroke="rgba(0,210,106,0.13)" stroke-width="1"/>
+            <circle cx="92" cy="58" r="20" fill="#FAF7F2" stroke="#0A0908" stroke-width="1.6" opacity="0.95"/>
+            <line x1="106" y1="72" x2="120" y2="86" stroke="#FAF7F2" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="92" cy="58" r="3.5" fill="#EF4444">
+              <animate attributeName="cx" values="86;98;86" dur="2.6s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values="1;0.3;1" dur="2.6s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <h3>Caçar promoção</h3>
+        <p>Black Friday, dia da semana, hora exata. Quem não passa o dia caçando, perde. E quando aparece, raramente é a rota que você precisa. Em alta temporada o jogo vira: passagem pra Salvador no Carnaval chega a R$ 2.500, sem nenhuma "promoção" pra resgatar.</p>
+      </article>
+
+      <article class="problem-card reveal delay-3">
+        <div class="illu">
+          <svg viewBox="0 0 200 130" width="200" height="130" aria-hidden="true">
+            <defs>
+              <radialGradient id="haloR3" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FAF7F2" stop-opacity="0.18"/>
+                <stop offset="100%" stop-color="#FAF7F2" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="100" cy="65" r="55" fill="url(#haloR3)"/>
+            <circle cx="100" cy="65" r="38" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
+            <circle cx="100" cy="65" r="50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+            <path d="M 70 65 C 70 50, 90 50, 90 65 C 90 80, 110 80, 110 65 C 110 50, 130 50, 130 65" fill="none" stroke="#FAF7F2" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>
+            <circle cx="70" cy="65" r="4.5" fill="#FAF7F2"/>
+            <circle cx="130" cy="65" r="4.5" fill="#00D26A"/>
+            <text x="100" y="100" font-family="Manrope,sans-serif" font-weight="600" font-size="11" fill="rgba(250,247,242,0.5)" text-anchor="middle">milhas · pontos · taxa</text>
+          </svg>
+        </div>
+        <h3>Acumular milhas</h3>
+        <p>185 milhões de brasileiros estão em programa de fidelidade. A maioria desiste no caminho. Milhas expiram, vagas pros destinos que você quer esgotam, plataformas quebram (vimos R$ 2,3 bilhões em dívida só no caso 123 Milhas). Pra quem precisa viajar agora, milhas raramente servem.</p>
+      </article>
+    </div>
+
+    <p class="problem-transition reveal delay-2">Existe um <span>quarto caminho</span> que ninguém te conta. Ele não depende de antecedência, sorte ou cartão.</p>
+  </div>
+</section>
+
+<!-- ===== SHIFT (mecanismo + como funciona) ===== -->
+<section class="shift lazy" id="metodo" aria-labelledby="shift-h2">
+  <div class="wrap">
+    <div class="shift-grid">
+      <div class="shift-copy">
+        <h2 id="shift-h2" class="reveal">Tabelas Fixas: <span class="accent">o mesmo preço</span>, o ano inteiro.</h2>
+        <p class="lead reveal delay-1">Existe um valor de passagem pré-definido pelas próprias companhias aéreas. Em janeiro, em julho ou na véspera de Natal: o número não muda. Quem conhece o método paga o valor da tabela. Quem não conhece paga o que o sistema cobrar.</p>
+      </div>
+
+      <div class="shift-visual reveal delay-1">
+        <svg viewBox="0 0 380 320" width="100%" style="max-width:380px" aria-hidden="true">
+          <defs>
+            <radialGradient id="haloShift" cx="50%" cy="50%" r="55%">
+              <stop offset="0%" stop-color="#00D26A" stop-opacity="0.22"/>
+              <stop offset="100%" stop-color="#00D26A" stop-opacity="0"/>
+            </radialGradient>
+            <linearGradient id="rowGrad" x1="0%" x2="100%">
+              <stop offset="0%" stop-color="#00D26A" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#00D26A" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <circle cx="190" cy="160" r="150" fill="url(#haloShift)"/>
+          <circle cx="190" cy="160" r="120" fill="none" stroke="rgba(0,210,106,0.16)" stroke-width="1"/>
+          <circle cx="190" cy="160" r="90" fill="none" stroke="rgba(0,210,106,0.1)" stroke-width="1"/>
+          <rect x="60" y="60" width="260" height="200" rx="14" fill="#FAF7F2" opacity="0.96"/>
+          <rect x="60" y="60" width="260" height="200" rx="14" fill="none" stroke="rgba(0,0,0,0.08)" stroke-width="1"/>
+          <rect x="60" y="60" width="260" height="34" rx="14" fill="#0A0908"/>
+          <rect x="60" y="80" width="260" height="14" fill="#0A0908"/>
+          <text x="78" y="80" font-family="Bricolage Grotesque,sans-serif" font-weight="700" font-size="11" fill="#FAF7F2" letter-spacing="2">TABELA · COMPANHIA AEREA</text>
+          <circle cx="304" cy="76" r="4" fill="#00D26A"/>
+          <g font-family="Manrope,sans-serif" font-size="11">
+            <rect x="60" y="106" width="260" height="36" fill="url(#rowGrad)"/>
+            <text x="78" y="129" font-weight="600" fill="#0A0908">Rota A</text>
+            <text x="302" y="129" font-weight="800" fill="#00A856" text-anchor="end">R$ 219</text>
+            <text x="78" y="161" font-weight="600" fill="#0A0908">Rota B</text>
+            <text x="302" y="161" font-weight="800" fill="#00A856" text-anchor="end">R$ 245</text>
+            <line x1="78" y1="171" x2="302" y2="171" stroke="rgba(0,0,0,0.06)"/>
+            <rect x="60" y="178" width="260" height="36" fill="url(#rowGrad)"/>
+            <text x="78" y="201" font-weight="600" fill="#0A0908">Rota C</text>
+            <text x="302" y="201" font-weight="800" fill="#00A856" text-anchor="end">R$ 489</text>
+            <text x="78" y="233" font-weight="600" fill="#0A0908">Rota D</text>
+            <text x="302" y="233" font-weight="800" fill="#00A856" text-anchor="end">R$ 312</text>
+          </g>
+          <g transform="translate(280, 36)">
+            <rect x="-46" y="0" width="92" height="28" rx="14" fill="#00D26A"/>
+            <text x="0" y="18" font-family="Bricolage Grotesque,sans-serif" font-weight="800" font-size="10" fill="#001b0d" text-anchor="middle" letter-spacing="1">PRECO FIXO</text>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <div class="steps-grid">
+      <article class="step-card reveal delay-1">
+        <div class="step-num">1</div>
+        <h3>Abre a tabela</h3>
+        <p>Você acessa o material e escolhe entre as principais companhias aéreas.</p>
+        <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </article>
+      <article class="step-card reveal delay-2">
+        <div class="step-num">2</div>
+        <h3>Consulta o destino</h3>
+        <p>Cruza com a sua rota. O valor da tabela aparece, independente da data, do feriado, da temporada.</p>
+        <svg class="step-arrow" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </article>
+      <article class="step-card reveal delay-3">
+        <div class="step-num">3</div>
+        <h3>Compra direto na cia</h3>
+        <p>Vai no site da companhia, aplica o filtro, fecha. A passagem sai pelo valor da tabela.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARE ===== -->
+<section class="lazy" aria-labelledby="compara-h2">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2 id="compara-h2">Mesma rota. Mesma data. Outro preço.</h2>
+      <p class="lead">A diferença não está no voo. Está em quem sabe ler a tabela.</p>
+    </div>
+
+    <div class="compare-grid">
+      <article class="compare-card compare-before reveal delay-1">
+        <span class="compare-tag before">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          antes · comprou em cima da hora
+        </span>
+        <p class="compare-route">Rio <b>→</b> Salvador · Carnaval, comprado 5 dias antes</p>
+        <div>
+          <p class="compare-meta" style="margin-bottom:8px">preço pago no balcão</p>
+          <p class="compare-amount before">R$ 2.412</p>
+        </div>
+        <div class="compare-bar"><div class="compare-bar-fill before"></div></div>
+        <p class="compare-quote">"Foi o que apareceu na busca. Tive que embarcar."</p>
+      </article>
+
+      <article class="compare-card compare-after reveal delay-2">
+        <span class="compare-tag after">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>
+          depois · com tabelas fixas
+        </span>
+        <p class="compare-route">Rio <b>→</b> Salvador · mesmo voo, mesma data, mesma poltrona</p>
+        <div class="compare-print-placeholder">
+          📱 Espaço pro print real da<br>tabela fixa nessa rota<br><small style="opacity:0.7;margin-top:6px;display:block">(Davi insere a imagem)</small>
+        </div>
+        <p class="compare-quote">"Mesma data, mesma poltrona. Pelo valor da tabela."</p>
+      </article>
+    </div>
+
+    <p class="compare-note reveal delay-3">A diferença entre comprar em alta temporada e comprar pelo valor da tabela fixa chega a <b>até 8x</b>. Sem alteração no voo, na cia ou na bagagem.</p>
+  </div>
+</section>
+
+<!-- ===== AUTHORITY ===== -->
+<section class="authority lazy" aria-labelledby="autor-h2">
+  <div class="wrap authority-grid">
+    <div class="author-photo reveal" aria-label="foto do David Nussbaum">
+      <span class="placeholder">DN</span>
+    </div>
+    <div class="authority-copy">
+      <h2 id="autor-h2" class="reveal">Quem é o David Nussbaum.</h2>
+      <div class="authority-bio">
+        <p class="reveal delay-1">David Nussbaum criou o Milhas do Zero em 2019. Já formou mais de 1.000 alunos no mercado de turismo e milhas, com mais de R$ 10 milhões faturados no digital.</p>
+        <p class="reveal delay-2">Tabelas Fixas é uma das estratégias que ele ensina pra economizar em passagem aérea. É a mais rápida de aplicar, sem cartão, sem promoção, só leitura de tabela. E é uma das que ele mais usa nas próprias viagens.</p>
+      </div>
+      <ul class="authority-bullets reveal delay-3">
+        <li>
+          <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg></span>
+          <span><b>+10M</b> faturados no digital ensinando turismo e milhas</span>
+        </li>
+        <li>
+          <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg></span>
+          <span><b>+1.000</b> alunos formados desde 2019</span>
+        </li>
+        <li>
+          <span class="check-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg></span>
+          <span><b>Mentor de mentores</b> no mercado, formando os próximos especialistas</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIALS ===== -->
+<section class="testimonials lazy" aria-labelledby="depo-h2">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+      <h2 id="depo-h2">Quem aplicou está aqui pra contar.</h2>
+      <p class="lead" style="margin-inline:auto">Conversas reais de alunos compartilhando o que mudou depois das tabelas.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-print reveal delay-1"><div class="testimonial-placeholder"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>print 01<br><small style="opacity:0.7">davi insere a conversa</small></div></div>
+      <div class="testimonial-print reveal delay-2"><div class="testimonial-placeholder"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>print 02<br><small style="opacity:0.7">davi insere a conversa</small></div></div>
+      <div class="testimonial-print reveal delay-3"><div class="testimonial-placeholder"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>print 03<br><small style="opacity:0.7">davi insere a conversa</small></div></div>
+      <div class="testimonial-print reveal delay-1"><div class="testimonial-placeholder"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>print 04<br><small style="opacity:0.7">davi insere a conversa</small></div></div>
+      <div class="testimonial-print reveal delay-2"><div class="testimonial-placeholder"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>print 05<br><small style="opacity:0.7">davi insere a conversa</small></div></div>
+      <div class="testimonial-print reveal delay-3"><div class="testimonial-placeholder"><span class="icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z"/></svg></span>print 06<br><small style="opacity:0.7">davi insere a conversa</small></div></div>
+    </div>
+
+    <p class="testimonials-link reveal">Mais conversas no <a href="https://instagram.com/milhasdozero" target="_blank" rel="noopener">@milhasdozero →</a></p>
+  </div>
+</section>
+
+<!-- ===== PLAN (DESTAQUE INTENSO) ===== -->
+<section class="plan lazy" id="plano" aria-labelledby="plano-h2">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+      <h2 id="plano-h2">Pague uma vez. Aplique pra sempre.</h2>
+      <p class="lead" style="margin-inline:auto">4 aulas gravadas. Tabelas atualizadas. Acesso vitalício. Por R$ 49,90.</p>
+    </div>
+
+    <div class="plan-card reveal delay-1">
+      <div class="plan-ribbon">
+        <span class="bolt">⚡</span>
+        OFERTA COMPLETA · ECONOMIA DE 87%
+      </div>
+
+      <span class="plan-pill">tabelas fixas do zero</span>
+      <p class="plan-name">Curso completo</p>
+      <p class="plan-sub">4 aulas gravadas · acesso vitalício · suporte via WhatsApp</p>
+
+      <ul class="plan-features">
+        <li>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Curso Tabelas Fixas, 4 aulas gravadas</span>
+          <span class="item-value">valor R$ 197</span>
+        </li>
+        <li>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Tabelas atualizadas das principais companhias</span>
+          <span class="item-value">valor R$ 97</span>
+        </li>
+        <li>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Acesso vitalício e todas as atualizações</span>
+          <span class="item-value">valor R$ 67</span>
+        </li>
+        <li>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Certificado de conclusão</span>
+          <span class="item-value">valor R$ 27</span>
+        </li>
+      </ul>
+
+      <div class="plan-stack-total">
+        <span>Total empilhado</span>
+        <span class="total-old">R$ 388</span>
+      </div>
+
+      <div class="plan-price-block">
+        <span class="plan-current"><span class="currency">R$</span>49<span class="cents">,90</span></span>
+        <p class="plan-payment">à vista no Pix</p>
+        <p class="plan-installment">ou 5x de R$ 11,05 no cartão</p>
+        <span class="plan-economy">você economiza R$ 338,10</span>
+      </div>
+
+      <a href="#" class="btn btn-primary plan-cta" id="plan-cta-btn">
+        QUERO O MÉTODO AGORA · R$ 49,90
+        <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+
+      <div class="plan-guarantee">
+        <svg class="shield" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.5 9-8 10-4.5-1-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        7 dias de garantia incondicional. Não gostou, devolvemos.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="lazy" aria-labelledby="faq-h2">
+  <div class="wrap">
+    <div class="section-head reveal" style="text-align:center;margin-inline:auto">
+      <h2 id="faq-h2">Antes de você comprar.</h2>
+    </div>
+
+    <div class="faq reveal">
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-1">As tabelas funcionam pra qualquer destino?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-1"><div class="faq-a-inner">Funcionam pras principais rotas nacionais e internacionais cobertas pelas companhias mapeadas no curso. Algumas rotas regionais com baixa frequência podem ter restrição. A aula 4 mostra como contornar.</div></div>
+      </div>
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-2">Vou precisar de cartão de milhas?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-2"><div class="faq-a-inner">Depende da tabela. Algumas funcionam com compra direta no site da companhia (qualquer cartão serve). Outras usam milhas acumuladas (qualquer cartão de pontos serve). O curso ensina como aplicar as duas.</div></div>
+      </div>
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-3">As tabelas mudam com o tempo?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-3"><div class="faq-a-inner">Sim, em ciclos longos. As atualizações ficam disponíveis na área de membros. Por isso o acesso é vitalício.</div></div>
+      </div>
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-4">Quem nunca emitiu uma passagem consegue aplicar?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-4"><div class="faq-a-inner">Sim. As aulas começam do zero e mostram passo a passo, da leitura da tabela até a emissão dentro do site da companhia.</div></div>
+      </div>
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-5">Tem suporte? Como tiro dúvida?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-5"><div class="faq-a-inner">Sim, suporte via WhatsApp. Respondemos em até 48h úteis.</div></div>
+      </div>
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-6">Quanto tempo de acesso?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-6"><div class="faq-a-inner">Vitalício. Pagou uma vez, aplica pra sempre.</div></div>
+      </div>
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-7">Posso pedir reembolso?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-7"><div class="faq-a-inner">Sim. Garantia incondicional de 7 dias. Não gostou, devolvemos sem perguntas.</div></div>
+      </div>
+      <div class="faq-item" aria-expanded="false">
+        <button class="faq-q" aria-controls="faq-8">Em quanto tempo aplico?<span class="faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span></button>
+        <div class="faq-a" id="faq-8"><div class="faq-a-inner">Em poucas horas. As 4 aulas somam menos de 90 minutos. Dá pra terminar e fechar a primeira passagem no mesmo dia.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-final lazy" aria-labelledby="cta-final-h2">
+  <div class="wrap">
+    <h2 id="cta-final-h2" class="reveal">Você pode continuar pagando até <span class="accent">8x mais</span> por uma passagem.<br>Ou aprender o método em 4 aulas, por R$ 49,90.</h2>
+    <p class="reveal delay-1">Acesso vitalício · 7 dias de garantia · suporte via WhatsApp</p>
+    <a href="#plano" class="btn btn-primary btn-lg reveal delay-2">
+      GARANTIR MEU ACESSO AGORA · R$ 49,90
+      <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <span class="footer-mark">M</span>
+      <span class="footer-text">milhas do zero<small>david nussbaum</small></span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://instagram.com/milhasdozero" target="_blank" rel="noopener" aria-label="instagram do milhas do zero">@milhasdozero</a></li>
+      <li><a href="#">termos</a></li>
+      <li><a href="#">privacidade</a></li>
+      <li><a href="#">contato</a></li>
+    </ul>
+    <p class="footer-copy">© 2026 milhas do zero. todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<script>
+// === REVEAL ON SCROLL ===
+(function(){
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){
+    document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in-view'));
+    document.querySelectorAll('.hero-stage,.compare-card').forEach(el=>el.classList.add('in-view'));
+    return;
+  }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
+  document.querySelectorAll('.reveal,.compare-card,.hero-stage').forEach(el=>io.observe(el));
+})();
+
+// === FAQ ACCORDION ===
+document.querySelectorAll('.faq-item').forEach(item=>{
+  const btn = item.querySelector('.faq-q');
+  btn.addEventListener('click',()=>{
+    const open = item.getAttribute('aria-expanded') === 'true';
+    document.querySelectorAll('.faq-item').forEach(i=>i.setAttribute('aria-expanded','false'));
+    if(!open) item.setAttribute('aria-expanded','true');
+  });
+});
+</script>
+
+</body>
+</html>
