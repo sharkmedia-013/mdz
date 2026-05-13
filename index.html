@@ -455,8 +455,8 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
 }
 .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
 .compare-card{
-  position:relative;padding:34px;border-radius:var(--radius);
-  display:flex;flex-direction:column;gap:22px;min-height:420px;
+  position:relative;padding:30px;border-radius:var(--radius);
+  display:flex;flex-direction:column;gap:20px;min-height:560px;
 }
 .compare-before{
   background:linear-gradient(180deg,rgba(239,68,68,0.07) 0%,rgba(20,18,16,0.6) 100%);
@@ -485,7 +485,7 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
 .compare-meta{font-size:12.5px;color:var(--text-muted);font-weight:500}
 .compare-print-area{
   position:relative;
-  flex:1;min-height:280px;
+  flex:1 1 auto;min-height:360px;
   border-radius:var(--radius-sm);
   overflow:hidden;
   background:rgba(0,0,0,0.4);
@@ -856,32 +856,29 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
     -webkit-backdrop-filter:blur(14px) saturate(140%);
   }
   .hero-meta{gap:14px}
-  .compare-card{padding:26px;min-height:0}
-  .hero-stage{height:460px;max-width:320px;padding-top:14px;}
-  .davi-photo{width:300px;height:400px;}
-  .scarcity-bar{padding:8px 0;}
-  .scarcity-bar-inner{font-size:11px;gap:8px;flex-wrap:nowrap;letter-spacing:0;line-height:1.3;padding:0 12px;}
-  .scarcity-bar .scarcity-pulse{width:18px;height:18px;}
-  .scarcity-bar .scarcity-pulse svg{width:9px;height:9px;}
-  .scarcity-text b{padding:1px 5px;font-size:11px;}
-  /* Pop-ups: reposicionar pra não cobrir o rosto */
-  .popup{font-size:10.5px;padding:8px 12px;gap:8px;}
-  .popup-icon{width:24px;height:24px;}
-  .popup-text strong{font-size:11px;}
-  .popup-text small{font-size:10px;}
-  .popup-1{top:auto;bottom:18%;left:-14%;}
-  .popup-2{top:6%;bottom:auto;right:-10%;}
-  .popup-3{top:auto;bottom:4%;left:auto;right:-6%;}
-  .popup-4{bottom:auto;top:24%;left:-10%;}
-  .popup{font-size:11px;padding:10px 14px;}
-  .popup-text strong{font-size:12px;}
-  .popup-text small{font-size:10.5px;}
-  .popup-1{left:0;}
-  .popup-2{right:0;}
-  .popup-3{left:-4%;}
-  .popup-4{left:6%;}
-  .marquee-track{animation-duration:50s;}
-  .marquee-track span{font-size:12px;}
+  .compare-card{padding:22px;min-height:0;gap:18px}
+  .compare-print-area{min-height:340px}
+  .hero-stage{height:480px;max-width:340px;padding-top:14px;overflow:visible}
+  .davi-photo{width:300px;height:400px}
+  .scarcity-bar{padding:8px 0}
+  .scarcity-bar-inner{font-size:10.5px;gap:8px;flex-wrap:nowrap;letter-spacing:0;line-height:1.3;padding:0 12px}
+  .scarcity-bar .scarcity-pulse{width:18px;height:18px}
+  .scarcity-bar .scarcity-pulse svg{width:9px;height:9px}
+  .scarcity-text b{padding:1px 5px;font-size:10.5px}
+  /* Pop-ups mobile: só 3 visíveis, nos cantos extremos, longe do rosto */
+  .popup{font-size:10.5px;padding:8px 12px;gap:8px;max-width:175px}
+  .popup-icon{width:24px;height:24px;flex-shrink:0}
+  .popup-text strong{font-size:11px}
+  .popup-text small{font-size:10px}
+  .popup-1{top:auto;bottom:6%;left:-22%;right:auto}
+  .popup-2{top:4%;bottom:auto;left:auto;right:-18%}
+  .popup-3{top:auto;bottom:6%;left:auto;right:-22%}
+  .popup-4{display:none}
+  .marquee-track{animation-duration:50s}
+  .marquee-track span{font-size:12px}
+  /* Foto Quem Sou: width explícita e display block */
+  .author-photo{width:280px;max-width:none;aspect-ratio:3/4;margin-inline:auto;display:block;height:auto}
+  .author-photo img{display:block}
 }
 @media (max-width:480px){
   .wrap{padding-inline:18px}
@@ -1209,7 +1206,7 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
           antes · comprou em cima da hora
         </span>
-        <p class="compare-route">Rio <b>→</b> Salvador · Carnaval, comprado 5 dias antes</p>
+        <p class="compare-route">São Paulo <b>→</b> Rio · alta temporada, comprado 5 dias antes</p>
         <div class="compare-print-area">
           <img src="assets/compare-antes.jpg" alt="Print da passagem comprada em cima da hora" loading="lazy" onerror="this.style.display='none'">
           <div class="compare-print-fallback">
@@ -1228,7 +1225,7 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>
           depois · com tabelas fixas
         </span>
-        <p class="compare-route">Rio <b>→</b> Salvador · mesmo voo, mesma data, mesma poltrona</p>
+        <p class="compare-route">São Paulo <b>→</b> Rio · mesmo voo, mesma data, mesma poltrona</p>
         <div class="compare-print-area">
           <img src="assets/compare-depois.jpg" alt="Print da passagem pelo valor da tabela fixa" loading="lazy" onerror="this.style.display='none'">
           <div class="compare-print-fallback">
