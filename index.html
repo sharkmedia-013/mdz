@@ -865,15 +865,16 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
   .scarcity-bar .scarcity-pulse{width:18px;height:18px}
   .scarcity-bar .scarcity-pulse svg{width:9px;height:9px}
   .scarcity-text b{padding:1px 5px;font-size:10.5px}
-  /* Pop-ups mobile: só 3 visíveis, nos cantos extremos, longe do rosto */
+  /* Pop-ups mobile: todos no terço inferior (zona livre de rosto), bordas suaves */
   .popup{font-size:10.5px;padding:8px 12px;gap:8px;max-width:175px}
   .popup-icon{width:24px;height:24px;flex-shrink:0}
   .popup-text strong{font-size:11px}
   .popup-text small{font-size:10px}
-  .popup-1{top:auto;bottom:6%;left:-22%;right:auto}
-  .popup-2{top:4%;bottom:auto;left:auto;right:-18%}
-  .popup-3{top:auto;bottom:6%;left:auto;right:-22%}
-  .popup-4{display:none}
+  /* 30% superiores da imagem são intocáveis (rosto). Todos os pop-ups ficam em bottom < 65% */
+  .popup-1{top:auto;bottom:42%;left:-6%;right:auto;display:flex}
+  .popup-2{top:auto;bottom:58%;left:auto;right:-4%;display:flex}
+  .popup-3{top:auto;bottom:4%;left:auto;right:-6%;display:flex}
+  .popup-4{top:auto;bottom:14%;left:-4%;right:auto;display:flex}
   .marquee-track{animation-duration:50s}
   .marquee-track span{font-size:12px}
   /* Foto Quem Sou: width explícita e display block */
