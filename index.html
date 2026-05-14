@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Passagens Fixas do Zero · milhas do zero</title>
-<meta name="description" content="O método das Tabelas Fixas. Passagens com valor fixo pra qualquer data, mesmo em feriado, alta temporada ou em cima da hora. 4 aulas, R$ 49,90.">
+<meta name="description" content="O método das Passagens Fixas. Passagens com valor fixo pra qualquer data, mesmo em feriado, alta temporada ou em cima da hora. 4 aulas, R$ 49,90.">
 <meta name="theme-color" content="#0A0908">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -399,8 +399,9 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
   overflow:hidden;
 }
 .problem-card .illu{height:130px;margin-bottom:24px;display:flex;align-items:center;justify-content:center}
-.problem-card h3{margin-bottom:10px;font-size:22px}
-.problem-card p{color:var(--text-dim);font-size:15px}
+.problem-card h3{margin-bottom:14px;font-size:22px;line-height:1.25}
+.problem-card p{color:var(--text-dim);font-size:15px;line-height:1.65;letter-spacing:-0.003em}
+.problem-card p + p{margin-top:12px}
 .problem-transition{
   margin-top:48px;text-align:center;
   font-size:clamp(18px,2.2vw,22px);color:var(--text);font-weight:500;
@@ -800,18 +801,28 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
 
 /* ===== FOOTER ===== */
 .footer{padding-block:48px;border-top:1px solid var(--border);background:rgba(0,0,0,0.5)}
-.footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
 .footer-brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:-0.012em;font-family:var(--font-display)}
 .footer-mark{
-  width:30px;height:30px;border-radius:9px;
+  width:34px;height:34px;border-radius:10px;
   background:linear-gradient(135deg,var(--brand) 0%,var(--brand-deep) 100%);
-  display:grid;place-items:center;font-size:14px;font-weight:800;color:#001b0d;
+  display:grid;place-items:center;font-size:15px;font-weight:800;color:#001b0d;
+  box-shadow:0 6px 16px -6px var(--brand-glow);
 }
-.footer-text{font-size:15px;line-height:1.1}
+.footer-text{font-size:16px;line-height:1.1}
 .footer-text small{display:block;font-size:11px;color:var(--text-muted);font-weight:500;letter-spacing:0.04em;text-transform:uppercase;font-family:var(--font-body);margin-top:2px}
-.footer-links{display:flex;gap:24px;font-size:13px;color:var(--text-muted);font-weight:500}
-.footer-links a:hover{color:var(--brand)}
-.footer-copy{font-size:12.5px;color:var(--text-muted);font-weight:500}
+.footer-ig{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:14px;color:var(--text-dim);font-weight:600;
+  padding:8px 14px;border-radius:10px;
+  background:var(--glass);border:1px solid var(--border);
+  transition:color .18s var(--ease),border-color .18s var(--ease);
+}
+.footer-ig:hover{color:var(--brand);border-color:rgba(0,210,106,0.3)}
+.footer-legal{
+  padding-top:24px;
+  font-size:12px;color:var(--text-muted);font-weight:500;line-height:1.6;text-align:center;
+}
 
 /* ===== REVEAL ===== */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -841,23 +852,33 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
   .testimonials-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media (max-width:768px){
-  section{padding-block:72px}
-  .hero{padding-top:48px}
+  section{padding-block:56px}
+  .shift,.authority,.testimonials,.plan,.cta-final{padding-block:64px}
+  .section-head{margin-bottom:36px}
+  .hero{padding-top:48px;padding-bottom:32px}
   .problem-grid,.steps-grid,.compare-grid{grid-template-columns:1fr}
   .testimonials-grid{grid-template-columns:1fr;max-width:380px;margin-inline:auto}
   .testimonial-print{aspect-ratio:9/14}
   .authority-grid{grid-template-columns:1fr;gap:32px}
   .author-photo{max-width:280px;margin-inline:auto;aspect-ratio:3/4}
-  .plan-card{padding:42px 24px 32px}
+  .plan-card{padding:42px 22px 32px}
   .plan-current{font-size:60px}
+  /* Plan features no mobile: stack vertical, check em cima, valor à direita */
+  .plan-features li{gap:8px;flex-wrap:wrap;align-items:flex-start;padding:8px 0}
+  .plan-features li > span:first-child{flex:1 1 auto;min-width:0;font-size:13.5px;line-height:1.45;gap:8px;align-items:flex-start}
+  .plan-features .check-icon{margin-top:2px}
+  .plan-features .item-value{font-size:12.5px;flex-shrink:0;white-space:nowrap}
+  .plan-stack-total{font-size:13px}
+  .plan-stack-total .total-old{font-size:16px}
   .footer-grid{flex-direction:column;text-align:center}
   .btn-ghost,.plan-card,.popup{
     backdrop-filter:blur(14px) saturate(140%);
     -webkit-backdrop-filter:blur(14px) saturate(140%);
   }
   .hero-meta{gap:14px}
-  .compare-card{padding:22px;min-height:0;gap:18px}
-  .compare-print-area{min-height:340px}
+  .compare-card{padding:22px;min-height:0;gap:16px}
+  .compare-print-area{min-height:240px}
+  .compare-amount{font-size:36px}
   .hero-stage{height:480px;max-width:340px;padding-top:14px;overflow:visible}
   .davi-photo{width:300px;height:400px}
   .scarcity-bar{padding:8px 0}
@@ -907,7 +928,7 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
     <span class="scarcity-pulse" aria-hidden="true">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/></svg>
     </span>
-    <span class="scarcity-text" id="scarcity-text">Somente nos próximos dias você terá um desconto de <b>92%</b></span>
+    <span class="scarcity-text" id="scarcity-text">Somente nos próximos dias você terá um desconto de <b>87%</b></span>
   </div>
 </div>
 
@@ -919,28 +940,25 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
     <svg class="hero-bg-planes" viewBox="0 0 1200 480" preserveAspectRatio="xMidYMid slice">
       <path class="plane-line" d="M -5 280 Q 600 80 1200 320"/>
       <path class="plane-line" d="M 1200 120 Q 600 380 -5 80"/>
-      <!-- Avião 1 (comercial visto de cima, nariz à direita) -->
-      <g class="plane-icon plane-icon-1" fill="rgba(0,210,106,0.92)">
-        <!-- corpo + cauda (estabilizadores horizontais) -->
-        <path d="M 17 0 L 6 -1.8 L -8 -1.8 L -10 -6 L -13 -6 L -11 -1.8 L -14 -1.8 L -17 0 L -14 1.8 L -11 1.8 L -13 6 L -10 6 L -8 1.8 L 6 1.8 Z"/>
-        <!-- asa superior -->
-        <path d="M -3 -1.8 L 4 -1.8 L 3 -12 L -3 -12 Z"/>
-        <!-- asa inferior -->
-        <path d="M -3 1.8 L 4 1.8 L 3 12 L -3 12 Z"/>
+      <!-- Avião 1 (SVG ícone clássico, rotacionado pra nariz na direção do path) -->
+      <g class="plane-icon plane-icon-1">
+        <g transform="rotate(-45) scale(0.22) translate(-61.44 -61.44)" fill="rgba(0,210,106,0.92)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M16.63,105.75c0.01-4.03,2.3-7.97,6.03-12.38L1.09,79.73c-1.36-0.59-1.33-1.42-0.54-2.4l4.57-3.9c0.83-0.51,1.71-0.73,2.66-0.47l26.62,4.5l22.18-24.02L4.8,18.41c-1.31-0.77-1.42-1.64-0.07-2.65l7.47-5.96l67.5,18.97L99.64,7.45c6.69-5.79,13.19-8.38,18.18-7.15c2.75,0.68,3.72,1.5,4.57,4.08c1.65,5.06-0.91,11.86-6.96,18.86L94.11,43.18l18.97,67.5l-5.96,7.47c-1.01,1.34-1.88,1.23-2.65-0.07L69.43,66.31L45.41,88.48l4.5,26.62c0.26,0.94,0.05,1.82-0.47,2.66l-3.9,4.57c-0.97,0.79-1.81,0.82-2.4-0.54l-13.64-21.57c-4.43,3.74-8.37,6.03-12.42,6.03C16.71,106.24,16.63,106.11,16.63,105.75L16.63,105.75z"/>
+        </g>
       </g>
-      <!-- Avião 2 (igual, escala menor) -->
-      <g class="plane-icon plane-icon-2" fill="rgba(0,210,106,0.65)" transform="scale(0.7)">
-        <path d="M 17 0 L 6 -1.8 L -8 -1.8 L -10 -6 L -13 -6 L -11 -1.8 L -14 -1.8 L -17 0 L -14 1.8 L -11 1.8 L -13 6 L -10 6 L -8 1.8 L 6 1.8 Z"/>
-        <path d="M -3 -1.8 L 4 -1.8 L 3 -12 L -3 -12 Z"/>
-        <path d="M -3 1.8 L 4 1.8 L 3 12 L -3 12 Z"/>
+      <!-- Avião 2 (mesmo SVG, escala menor) -->
+      <g class="plane-icon plane-icon-2">
+        <g transform="rotate(-45) scale(0.16) translate(-61.44 -61.44)" fill="rgba(0,210,106,0.65)">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M16.63,105.75c0.01-4.03,2.3-7.97,6.03-12.38L1.09,79.73c-1.36-0.59-1.33-1.42-0.54-2.4l4.57-3.9c0.83-0.51,1.71-0.73,2.66-0.47l26.62,4.5l22.18-24.02L4.8,18.41c-1.31-0.77-1.42-1.64-0.07-2.65l7.47-5.96l67.5,18.97L99.64,7.45c6.69-5.79,13.19-8.38,18.18-7.15c2.75,0.68,3.72,1.5,4.57,4.08c1.65,5.06-0.91,11.86-6.96,18.86L94.11,43.18l18.97,67.5l-5.96,7.47c-1.01,1.34-1.88,1.23-2.65-0.07L69.43,66.31L45.41,88.48l4.5,26.62c0.26,0.94,0.05,1.82-0.47,2.66l-3.9,4.57c-0.97,0.79-1.81,0.82-2.4-0.54l-13.64-21.57c-4.43,3.74-8.37,6.03-12.42,6.03C16.71,106.24,16.63,106.11,16.63,105.75L16.63,105.75z"/>
+        </g>
       </g>
     </svg>
   </div>
 
   <div class="wrap hero-grid">
     <div class="hero-copy">
-      <h1 id="hero-h1" class="reveal">Passagens secretas pra emitir e pagar até <span class="accent">8x menos</span>.</h1>
-      <p class="lead reveal delay-1">Você nunca mais vai pagar caro em passagem aérea. São as Tabelas Fixas: passagens com valor fixo pra qualquer data, mesmo em feriado, alta temporada ou em cima da hora. 4 aulas, R$ 49,90, acesso vitalício.</p>
+      <h1 id="hero-h1" class="reveal">Passagens fixas pra emitir e pagar até <span class="accent">73% menos</span>.</h1>
+      <p class="lead reveal delay-1">Você nunca mais vai pagar caro em passagem aérea. São as Passagens Fixas: passagens com valor fixo pra qualquer data, mesmo em feriado, alta temporada ou em cima da hora. 4 aulas, R$ 49,90, acesso vitalício.</p>
 
       <div class="hero-ctas reveal delay-2">
         <a href="#plano" class="btn btn-primary btn-lg">
@@ -948,12 +966,6 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
         <a href="#metodo" class="btn btn-ghost btn-lg">COMO FUNCIONA →</a>
-      </div>
-
-      <div class="hero-meta reveal delay-3">
-        <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>acesso vitalício</span>
-        <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>7 dias de garantia</span>
-        <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>suporte via WhatsApp</span>
       </div>
 
     </div>
@@ -1016,14 +1028,14 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
   <div class="marquee-track">
     <span><span class="icon">!</span>Carnaval 2026: passagens chegam a <b>R$ 2.500</b> em alta temporada</span>
     <span><span class="icon">!</span>Réveillon: as 2 últimas semanas de dezembro custam <b>+R$ 480</b> em média</span>
-    <span><span class="icon">!</span>Comprar em cima da hora pode ser até <b>8x mais caro</b> que a tabela</span>
+    <span><span class="icon">!</span>Comprar em cima da hora pode ser até <b>até 73% mais caro</b> que a tabela</span>
     <span><span class="icon">!</span><b>R$ 2,3 bilhões</b> em dívida no caso 123 Milhas</span>
     <span><span class="icon">!</span><b>185 milhões</b> de brasileiros em programas de fidelidade. Maioria desiste</span>
     <span><span class="icon">!</span>Tarifa média no Brasil em 2026: <b>R$ 707</b>, alta de 17,8% em 12 meses</span>
     <span><span class="icon">!</span>Promoções de última hora <b>não existem</b> no Brasil</span>
     <span><span class="icon">!</span>Carnaval 2026: passagens chegam a <b>R$ 2.500</b> em alta temporada</span>
     <span><span class="icon">!</span>Réveillon: as 2 últimas semanas de dezembro custam <b>+R$ 480</b> em média</span>
-    <span><span class="icon">!</span>Comprar em cima da hora pode ser até <b>8x mais caro</b> que a tabela</span>
+    <span><span class="icon">!</span>Comprar em cima da hora pode ser até <b>até 73% mais caro</b> que a tabela</span>
     <span><span class="icon">!</span><b>R$ 2,3 bilhões</b> em dívida no caso 123 Milhas</span>
     <span><span class="icon">!</span><b>185 milhões</b> de brasileiros em programas de fidelidade. Maioria desiste</span>
     <span><span class="icon">!</span>Tarifa média no Brasil em 2026: <b>R$ 707</b>, alta de 17,8% em 12 meses</span>
@@ -1065,8 +1077,9 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
             </text>
           </svg>
         </div>
-        <h3>Comprar em cima da hora</h3>
-        <p>Marcou compromisso de surpresa, casamento, emergência? O sistema sobe o preço na sua cara. A diferença entre comprar com antecedência e comprar na véspera chega a 8x mais cara na mesma rota, mesmo voo, mesma poltrona.</p>
+        <h3>Já comprou em cima da hora?</h3>
+        <p>Já paguei R$ 2.800 num voo nacional só porque deixei pra véspera.</p>
+        <p>Não é azar, não. O sistema cobra mais de quem precisa mais.</p>
       </article>
 
       <article class="problem-card reveal delay-2">
@@ -1089,8 +1102,9 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
             </circle>
           </svg>
         </div>
-        <h3>Caçar promoção</h3>
-        <p>Black Friday, dia da semana, hora exata. Quem não passa o dia caçando, perde. E quando aparece, raramente é a rota que você precisa. Em alta temporada o jogo vira: passagem pra Salvador no Carnaval chega a R$ 2.500, sem nenhuma "promoção" pra resgatar.</p>
+        <h3>Sempre paga o preço cheio?</h3>
+        <p>Você abre o Decolar, o Google Voos, ou vai direto na agência. Bate o preço, acha bom, fecha.</p>
+        <p>Quem conhece o atalho paga até 73% menos no mesmo voo.</p>
       </article>
 
       <article class="problem-card reveal delay-3">
@@ -1098,25 +1112,25 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
           <svg viewBox="0 0 200 130" width="200" height="130" aria-hidden="true">
             <defs>
               <radialGradient id="haloR3" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#FAF7F2" stop-opacity="0.18"/>
-                <stop offset="100%" stop-color="#FAF7F2" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#00D26A" stop-opacity="0.32"/>
+                <stop offset="100%" stop-color="#00D26A" stop-opacity="0"/>
               </radialGradient>
             </defs>
             <circle cx="100" cy="65" r="55" fill="url(#haloR3)"/>
-            <circle cx="100" cy="65" r="38" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1"/>
-            <circle cx="100" cy="65" r="50" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
-            <path d="M 70 65 C 70 50, 90 50, 90 65 C 90 80, 110 80, 110 65 C 110 50, 130 50, 130 65" fill="none" stroke="#FAF7F2" stroke-width="3.5" stroke-linecap="round" opacity="0.9"/>
-            <circle cx="70" cy="65" r="4.5" fill="#FAF7F2"/>
-            <circle cx="130" cy="65" r="4.5" fill="#00D26A"/>
-            <text x="100" y="100" font-family="Manrope,sans-serif" font-weight="600" font-size="11" fill="rgba(250,247,242,0.5)" text-anchor="middle">milhas · pontos · taxa</text>
+            <circle cx="100" cy="65" r="38" fill="none" stroke="rgba(0,210,106,0.22)" stroke-width="1"/>
+            <circle cx="100" cy="65" r="50" fill="none" stroke="rgba(0,210,106,0.13)" stroke-width="1"/>
+            <g transform="translate(100 65) scale(0.55) translate(-61.44 -61.44)" fill="#FAF7F2">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M16.63,105.75c0.01-4.03,2.3-7.97,6.03-12.38L1.09,79.73c-1.36-0.59-1.33-1.42-0.54-2.4l4.57-3.9c0.83-0.51,1.71-0.73,2.66-0.47l26.62,4.5l22.18-24.02L4.8,18.41c-1.31-0.77-1.42-1.64-0.07-2.65l7.47-5.96l67.5,18.97L99.64,7.45c6.69-5.79,13.19-8.38,18.18-7.15c2.75,0.68,3.72,1.5,4.57,4.08c1.65,5.06-0.91,11.86-6.96,18.86L94.11,43.18l18.97,67.5l-5.96,7.47c-1.01,1.34-1.88,1.23-2.65-0.07L69.43,66.31L45.41,88.48l4.5,26.62c0.26,0.94,0.05,1.82-0.47,2.66l-3.9,4.57c-0.97,0.79-1.81,0.82-2.4-0.54l-13.64-21.57c-4.43,3.74-8.37,6.03-12.42,6.03C16.71,106.24,16.63,106.11,16.63,105.75L16.63,105.75z"/>
+            </g>
           </svg>
         </div>
-        <h3>Acumular milhas</h3>
-        <p>185 milhões de brasileiros estão em programa de fidelidade. A maioria desiste no caminho. Milhas expiram, vagas pros destinos que você quer esgotam, plataformas quebram (vimos R$ 2,3 bilhões em dívida só no caso 123 Milhas). Pra quem precisa viajar agora, milhas raramente servem.</p>
+        <h3>Milhas paradas no programa?</h3>
+        <p>Você tem 50 mil, 100 mil pontos espalhados em vários programas.</p>
+        <p>Falta vaga pros bons destinos, falta saldo pra um voo decente. E quando você esquece, expiram.</p>
       </article>
     </div>
 
-    <p class="problem-transition reveal delay-2">Existe um <span>quarto caminho</span> que ninguém te conta. Ele não depende de antecedência, sorte ou cartão.</p>
+    <p class="problem-transition reveal delay-2">Existe um <span>quarto caminho</span>. Não depende de antecedência, nem de comprar pelo lugar óbvio, nem de juntar milha por anos.</p>
   </div>
 </section>
 
@@ -1125,8 +1139,9 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
   <div class="wrap">
     <div class="shift-grid">
       <div class="shift-copy">
-        <h2 id="shift-h2" class="reveal">Tabelas Fixas: <span class="accent">o mesmo preço</span>, o ano inteiro, sem mentiras e sem falcatruas.</h2>
-        <p class="lead reveal delay-1">Existe um valor de passagem pré-definido pelas próprias companhias aéreas. Em janeiro, em julho ou na véspera de Natal: o número não muda. Quem conhece o método paga o valor da tabela. Quem não conhece paga o que o sistema cobrar.</p>
+        <h2 id="shift-h2" class="reveal">Passagens Fixas: <span class="accent">o mesmo preço</span>, o ano inteiro, sem mentiras e sem falcatruas.</h2>
+        <p class="lead reveal delay-1">Existe um valor de passagem pré-definido pelas próprias companhias aéreas. Em janeiro, em julho ou na véspera de Natal, o número não muda.</p>
+        <p class="lead reveal delay-2" style="margin-top:14px">Quem conhece o método paga o valor da tabela. Quem não conhece paga o que o sistema cobrar.</p>
       </div>
 
       <div class="shift-visual reveal delay-1">
@@ -1224,24 +1239,24 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
       <article class="compare-card compare-after reveal delay-2">
         <span class="compare-tag after">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>
-          depois · com tabelas fixas
+          depois · com passagens fixas
         </span>
         <p class="compare-route">São Paulo <b>→</b> Rio · mesmo voo, mesma data, mesma poltrona</p>
         <div class="compare-print-area">
-          <img src="assets/compare-depois.jpg" alt="Print da passagem pelo valor da tabela fixa" loading="lazy" onerror="this.style.display='none'">
+          <img src="assets/compare-depois.jpg" alt="Print da passagem pelo valor da passagem fixa" loading="lazy" onerror="this.style.display='none'">
           <div class="compare-print-fallback">
             📱 Espaço pro print<br><small style="opacity:0.7;margin-top:6px;display:block">(Davi insere a imagem)</small>
           </div>
         </div>
         <div>
-          <p class="compare-meta" style="margin-bottom:6px">preço pela tabela fixa</p>
+          <p class="compare-meta" style="margin-bottom:6px">preço pela passagem fixa</p>
           <p class="compare-amount after">R$ 737</p>
         </div>
         <p class="compare-quote">"Mesma data, mesma poltrona. Pelo valor da tabela."</p>
       </article>
     </div>
 
-    <p class="compare-note reveal delay-3">A diferença entre comprar em alta temporada e comprar pelo valor da tabela fixa chega a <b>até 8x</b>. Sem alteração no voo, na cia ou na bagagem.</p>
+    <p class="compare-note reveal delay-3">A diferença entre comprar em alta temporada e comprar pelo valor da passagem fixa chega a <b>até 73%</b>. Sem alteração no voo, na cia ou na bagagem.</p>
   </div>
 </section>
 
@@ -1254,7 +1269,7 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
     <div class="authority-copy">
       <h2 id="autor-h2" class="reveal">Quem é o David Nussbaum.</h2>
       <div class="authority-bio">
-        <p class="reveal delay-1"><b>David Nussbaum</b>, carioca, morador de São Paulo, 26 anos, libriano, apaixonado por viagens e desde 2022 no mercado do turismo.</p>
+        <p class="reveal delay-1"><b>David Nussbaum</b>, carioca, morador de São Paulo, 26 anos, apaixonado por viagens e desde 2022 no mercado do turismo.</p>
         <p class="reveal delay-1">Em 2020 comecei a estudar muito sobre viagens, passagens aéreas, trabalhei em uma agência de viagens, até que conheci o mundo das milhas aéreas durante a pandemia em 2021 e descobri que poderia viajar de forma muito mais barata todos os anos e obter uma nova fonte de renda extra com as milhas aéreas, que hoje é meu principal negócio.</p>
         <p class="reveal delay-2">Desde então já conheci lugares como Dubai, Tailândia, Doha, Abu Dhabi, Jerusalém, Tel Aviv, Galileia, Paris, Nova Iorque, Orlando, Chicago, Washington, Atenas, Santorini, Mykonos, Buenos Aires, Colônia de Sacramento, além de diversas viagens nacionais. Em julho de 2022 decidi ajudar outras pessoas a realizarem seus sonhos e melhorarem sua qualidade de vida.</p>
         <p class="reveal delay-2">Até o momento, já foram <b>mais de 2.000 alunos e clientes</b> que passaram a realizar seus sonhos através do meu conhecimento, passado diariamente em nossas redes sociais e produtos digitais.</p>
@@ -1312,7 +1327,7 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
       </div>
     </div>
 
-    <p class="testimonials-link reveal">Mais conversas no <a href="https://instagram.com/milhasdozero" target="_blank" rel="noopener">@milhasdozero →</a></p>
+    <p class="testimonials-link reveal">Mais conversas no <a href="https://www.instagram.com/milhasdozer0/" target="_blank" rel="noopener">@milhasdozer0 →</a></p>
   </div>
 </section>
 
@@ -1326,7 +1341,7 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
     <div class="plan-card reveal delay-1">
       <div class="plan-ribbon">
         <span class="bolt">⚡</span>
-        OFERTA COMPLETA · ECONOMIA DE 92%
+        OFERTA COMPLETA · ECONOMIA DE 87%
       </div>
 
       <span class="plan-pill">passagens fixas do zero</span>
@@ -1334,38 +1349,34 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
 
       <ul class="plan-features">
         <li>
-          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Curso Tabelas Fixas, 4 aulas gravadas</span>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Curso Passagens Fixas do Zero</span>
           <span class="item-value">valor R$ 197</span>
         </li>
         <li>
-          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Tabelas fixas Star Alliance</span>
-          <span class="item-value">valor R$ 97</span>
-        </li>
-        <li>
-          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Tabelas fixas Sky Team</span>
-          <span class="item-value">valor R$ 97</span>
-        </li>
-        <li>
-          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Tabelas fixas One World</span>
-          <span class="item-value">valor R$ 97</span>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Suporte na área de membros</span>
+          <span class="item-value">valor R$ 89,90</span>
         </li>
         <li>
           <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Atualizações vitalícias das tabelas</span>
-          <span class="item-value">valor R$ 47</span>
+          <span class="item-value">valor R$ 37</span>
         </li>
         <li>
-          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Suporte na área de membros</span>
-          <span class="item-value">valor R$ 47</span>
-        </li>
-        <li>
-          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Certificado de conclusão</span>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Passagens fixas Star Alliance</span>
           <span class="item-value">valor R$ 27</span>
+        </li>
+        <li>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Passagens fixas Sky Team</span>
+          <span class="item-value">valor R$ 27</span>
+        </li>
+        <li>
+          <span><svg class="check-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Passagens fixas One World</span>
+          <span class="item-value">valor R$ 22</span>
         </li>
       </ul>
 
       <div class="plan-stack-total">
         <span>Custo Total</span>
-        <span class="total-old">R$ 609</span>
+        <span class="total-old">R$ 399,90</span>
       </div>
 
       <div class="plan-price-block">
@@ -1374,11 +1385,11 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
         <div class="plan-installment-highlight">
           ou <b>5x de R$ 11,05</b> no cartão
         </div>
-        <div style="margin-top:14px"><span class="plan-economy">você economiza R$ 559,10</span></div>
+        <div style="margin-top:14px"><span class="plan-economy">você economiza R$ 350</span></div>
       </div>
 
       <div class="plan-cta-wrap">
-        <a href="#" class="btn btn-primary plan-cta" id="plan-cta-btn">
+        <a href="https://hub.la/g/D4OkExVgGEySd39YoANv" target="_blank" rel="noopener" class="btn btn-primary plan-cta" id="plan-cta-btn">
           COMPRAR AGORA
           <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -1439,11 +1450,11 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
 <!-- ===== CTA FINAL ===== -->
 <section class="cta-final lazy" aria-labelledby="cta-final-h2">
   <div class="wrap">
-    <h2 id="cta-final-h2" class="reveal">Você pode continuar pagando até <span class="accent">8x mais</span> por uma passagem aérea...<br>Ou aprender o método em 4 aulas por <span class="accent">R$ 49,90</span>.</h2>
+    <h2 id="cta-final-h2" class="reveal">Você pode continuar pagando <span class="accent">o preço cheio</span> por uma passagem aérea...<br>Ou aprender o método em 4 aulas por <span class="accent">R$ 49,90</span>.</h2>
     <div class="check-row reveal delay-1">
       <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Acesso vitalício</span>
       <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>7 dias de garantia</span>
-      <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Suporte no WhatsApp</span>
+      <span><svg class="check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-11"/></svg>Suporte na área de membros</span>
     </div>
     <a href="#plano" class="btn btn-primary btn-lg reveal delay-2">
       QUERO VIAJAR BARATO
@@ -1459,13 +1470,14 @@ h3{font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600}
       <span class="footer-mark">M</span>
       <span class="footer-text">milhas do zero<small>david nussbaum</small></span>
     </div>
-    <ul class="footer-links">
-      <li><a href="https://instagram.com/milhasdozero" target="_blank" rel="noopener" aria-label="instagram do milhas do zero">@milhasdozero</a></li>
-      <li><a href="#">termos</a></li>
-      <li><a href="#">privacidade</a></li>
-      <li><a href="#">contato</a></li>
-    </ul>
-    <p class="footer-copy">© 2026 milhas do zero. todos os direitos reservados.</p>
+    <a href="https://www.instagram.com/milhasdozer0/" target="_blank" rel="noopener" class="footer-ig" aria-label="instagram do milhas do zero">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.4A4 4 0 1 1 12.6 8 4 4 0 0 1 16 11.4z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
+      @milhasdozer0
+    </a>
+  </div>
+  <div class="wrap footer-legal">
+    © 2026 MILHAS DO ZER0. Todos os direitos reservados.<br>
+    Ao utilizar este site, você concorda com os nossos Termos de Uso e Política de Privacidade.
   </div>
 </footer>
 
@@ -1512,11 +1524,11 @@ document.querySelectorAll('.faq-item').forEach(item=>{
   const dia = n => String(n).padStart(2,'0');
   let frase;
   if (m1 === m3) {
-    frase = `Somente nos dias ${dia(d1.getDate())}, ${dia(d2.getDate())} e ${dia(d3.getDate())} de ${meses[m3]} você terá um desconto de <b>92%</b>`;
+    frase = `Somente nos dias ${dia(d1.getDate())}, ${dia(d2.getDate())} e ${dia(d3.getDate())} de ${meses[m3]} você terá um desconto de <b>87%</b>`;
   } else if (m1 !== m2 && m2 === m3) {
-    frase = `Somente nos dias ${dia(d1.getDate())} de ${meses[m1]}, ${dia(d2.getDate())} e ${dia(d3.getDate())} de ${meses[m3]} você terá um desconto de <b>92%</b>`;
+    frase = `Somente nos dias ${dia(d1.getDate())} de ${meses[m1]}, ${dia(d2.getDate())} e ${dia(d3.getDate())} de ${meses[m3]} você terá um desconto de <b>87%</b>`;
   } else {
-    frase = `Somente nos dias ${dia(d1.getDate())} e ${dia(d2.getDate())} de ${meses[m1]}, ${dia(d3.getDate())} de ${meses[m3]} você terá um desconto de <b>92%</b>`;
+    frase = `Somente nos dias ${dia(d1.getDate())} e ${dia(d2.getDate())} de ${meses[m1]}, ${dia(d3.getDate())} de ${meses[m3]} você terá um desconto de <b>87%</b>`;
   }
   el.innerHTML = frase;
 })();
